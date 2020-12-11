@@ -5,11 +5,20 @@ plugins {
     `maven-publish` // 如果要发布到MavenCentral所需要的插件，这里我们只是需要发布到本地而已
 }
 
-group = "moe.lemonneko.gradle"
-version = "1.0-SNAPSHOT"
+group = "moe.lemonneko.why"
+version = "1.0"
 
 repositories {
     mavenCentral()
+}
+
+gradlePlugin {
+    plugins {
+        register("First Plugin") {
+            id = "moe.lemonneko.why.plugin"
+            implementationClass = "moe.lemonneko.why.ThePlugin"
+        }
+    }
 }
 
 dependencies {

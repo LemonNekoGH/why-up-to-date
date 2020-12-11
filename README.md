@@ -16,7 +16,7 @@
 
 ### 目前已经写好的例子有
 
-- 没有
+- [moe.lemonneko.why.plugin: theSameInput](src/main/kotlin/moe/lemonneko/why/tasks/TheSameInputTask.kt)
 
 ### 为项目提交代码
 
