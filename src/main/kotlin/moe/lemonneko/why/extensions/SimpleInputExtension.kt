@@ -9,20 +9,20 @@ import javax.inject.Inject
 
 /**
  * 2020-12-11
- * 这是第一个例子需要用到的扩展，这里定义了TheSameInputTask的输入
- * @see moe.lemonneko.why.tasks.TheSameInputTask
+ * 这是第一个例子需要用到的扩展，这里定义了SimpleInputTask的输入
+ * @see moe.lemonneko.why.tasks.SimpleInputTask
  */
-open class TheSameInputExtension @Inject constructor(objectFactory: ObjectFactory) {
+open class SimpleInputExtension @Inject constructor(objectFactory: ObjectFactory) {
     var data: ExtensionData = objectFactory.newInstance(ExtensionData::class.java)
 
-    fun input(action: Action<in ExtensionData>) {
+    fun simpleInput(action: Action<in ExtensionData>) {
         action.execute(data)
     }
 
     /**
      * 听说这样写可以支持Kotlin DSL
      */
-    fun input(action: ExtensionData.() -> Unit) {
+    fun simpleInput(action: ExtensionData.() -> Unit) {
         action(data)
     }
 
@@ -35,7 +35,7 @@ open class TheSameInputExtension @Inject constructor(objectFactory: ObjectFactor
     }
 
     companion object {
-        const val name = "theSameInput"
-        const val taskName = name
+        const val name = "simpleInput"
+        const val taskName = name + "Task"
     }
 }

@@ -1,4 +1,4 @@
-import moe.lemonneko.why.extensions.TheSameInputExtension
+import moe.lemonneko.why.extensions.SimpleInputExtension
 
 buildscript {
     repositories {
@@ -16,8 +16,8 @@ buildscript {
 apply(plugin = "moe.lemonneko.why.plugin")
 
 // Kotlin DSL只能这样写
-configure<TheSameInputExtension> {
-    input { // 但是里面就可以用这种语法了
+configure<SimpleInputExtension> {
+    simpleInput { // 但是里面就可以用这种语法了
         input = "这儿是输出，如果不改这句话的话，运行两遍theSameInput时第二遍会被UP-TO-DATE"
         output = File(projectDir, "output")
     }

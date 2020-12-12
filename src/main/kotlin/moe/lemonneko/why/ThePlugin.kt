@@ -1,7 +1,7 @@
 package moe.lemonneko.why
 
-import moe.lemonneko.why.extensions.TheSameInputExtension
-import moe.lemonneko.why.tasks.TheSameInputTask
+import moe.lemonneko.why.extensions.SimpleInputExtension
+import moe.lemonneko.why.tasks.SimpleInputTask
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 
@@ -10,16 +10,28 @@ import org.gradle.api.Project
  * 所以一个插件就够了（大概
  */
 class ThePlugin : Plugin<Project> { // 实现Plugin接口之后你的类就是一个插件类了
+    lateinit var simpleInputExtension: SimpleInputExtension
     override fun apply(project: Project) {
-        createTheSameInputTaskAndExtension(project)
+        createSimpleInputTaskAndExtension(project)
     }
 
-    private fun createTheSameInputTaskAndExtension(project: Project) {
-        val extension = project.extensions.create(TheSameInputExtension.name, TheSameInputExtension::class.java)
-        project.tasks.register(TheSameInputExtension.taskName, TheSameInputTask::class.java) {
+    @Deprecated(
+        "此方法无效",
+        ReplaceWith(
+            "configure<SimpleInputExtension>",
+            imports = ["moe.lemonneko.why.extensions.SimpleInputExtension"]
+        )
+    )
+    fun Project.simpleInput(block: SimpleInputExtension.() -> Unit) {
+        block(simpleInputExtension)
+    }
+
+    private fun createSimpleInputTaskAndExtension(project: Project) {
+        simpleInputExtension = project.extensions.create(SimpleInputExtension.name, SimpleInputExtension::class.java)
+        project.tasks.register(SimpleInputExtension.taskName, SimpleInputTask::class.java) {
             it.group = whyUpToDateTaskGroup
             // configure the task
-            it.data = extension.data
+            it.data = simpleInputExtension.data
         }
     }
 

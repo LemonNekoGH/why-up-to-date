@@ -10,13 +10,13 @@
 
 - 什么时候会出现UP-TO-DATE
 - NO-SOURCE是怎么检测的
-- 什么时候Gradle会跳过你的Task并标记为SKIP
+- 什么时候Gradle会跳过你的Task并标记为SKIPPED
 
 项目代码大概会充满注释把，而且是中文注释
 
 ### 目前已经写好的例子有
 
-- [moe.lemonneko.why.plugin: theSameInput](src/main/kotlin/moe/lemonneko/why/tasks/TheSameInputTask.kt)
+- [moe.lemonneko.why.plugin: simpleInputTask](src/main/kotlin/moe/lemonneko/why/tasks/SimpleInputTask.kt)
 
 ### 为项目提交代码
 
